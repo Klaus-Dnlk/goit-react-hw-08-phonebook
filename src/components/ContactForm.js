@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import actions from '../redux/contacts/contacts-actions';
+import ContactOperations from '../redux/contacts/contacts-operations';
+import { getAllContacts } from '../redux/contacts/contacts-selectors';
 import s from './Styles.module.scss';
 
-function ContactForm({ newContact }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
+  const [phone, setPhone] = useState('');
+  const items = useSelector(getAllContacts);
+  const dispatch = useDispatch();
   const contactId = uuidv4();
   const phoneId = uuidv4();
 
@@ -18,8 +20,8 @@ function ContactForm({ newContact }) {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
       default:
         return;
@@ -28,13 +30,20 @@ function ContactForm({ newContact }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    newContact(name, number);
+    const repeatName = name =>
+      items.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+
+    if (repeatName(name)) {
+      alert(`${name} is already in contacts`);
+    } else {
+      dispatch(ContactOperations.addNewContact({ name, phone }));
+    }
     reset();
   };
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -58,12 +67,12 @@ function ContactForm({ newContact }) {
           Phone
           <input
             type="tel"
-            name="number"
+            name="phone"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
             className={s.inputWindow}
-            value={number}
+            value={phone}
             onChange={handleChange}
             id={phoneId}
           />
@@ -75,13 +84,3 @@ function ContactForm({ newContact }) {
     </form>
   );
 }
-
-const mapStateToProps = state => ({
-  items: state.contacts.items,
-});
-
-const mapDispatchToProps = dispatch => ({
-  newContact: (name, number) => dispatch(actions.addNewContact(name, number)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
