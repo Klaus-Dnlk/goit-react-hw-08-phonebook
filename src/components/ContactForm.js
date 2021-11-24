@@ -48,7 +48,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={s.form}>
+      <div className={s.contact_form}>
         <label htmlFor={contactId} className={s.formLabel}>
           Name
           <input
@@ -63,7 +63,7 @@ export default function ContactForm() {
             id={contactId}
           />
         </label>
-        <label htmlFor={phoneId} className={s.formLabel}>
+        <label htmlFor={phoneId} className={s.contact_formLabel}>
           Phone
           <input
             type="tel"

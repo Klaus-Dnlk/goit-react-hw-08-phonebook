@@ -1,16 +1,29 @@
-import s from './App.module.scss';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList ';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+import { Switch, Route } from 'react-router';
+import Container from './components/Container';
+import AppBar from './components/AppBar';
+import HomeView from './views/HomeView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
 
 export default function App() {
+  //   const dispatch = useDispatch();
+
+  //   useEffect(() => {
+  //     dispatch(authOperations.fetchCurrentUser());
+  //   }, [dispatch]);
+
   return (
-    <div className={s.section}>
-      <h2 className={s.title}>Phonebook</h2>
-      <ContactForm />
-      <h2 className={s.title}>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
+    <Container>
+      <AppBar />
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+        <Route path="/register" component={RegisterView} />
+        <Route path="/login" component={LoginView} />
+        <Route path="/contacts" component={ContactsView} />
+      </Switch>
+    </Container>
   );
 }

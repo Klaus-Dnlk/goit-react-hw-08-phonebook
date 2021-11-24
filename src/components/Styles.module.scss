@@ -1,4 +1,23 @@
-.form {
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.section {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    background-color: #77c497;
+    border-radius: 5%;
+
+    box-shadow: 15px 15px 11px -1px rgba(34, 60, 80, 0.2);;
+}
+
+
+.contact_form {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -7,7 +26,7 @@
     outline: 2px solid #000;
 }
 
-.formLabel {
+.contact_formLabel {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,4 +80,26 @@
     &:hover {
         box-shadow: inset 6.5em 0 0 0 #{adjust-hue(#8fc866, 45deg)};;
     }
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 700;
+    color: #2a3638;
+}
+
+.activeLink {
+    color: #E84A5F;
+}
+
+.user_container {
+    display: flex;
+    align-items: center;
+}
+
+.user_name {
+    margin-right: 11px;
+    font-weight: 700;
 }
