@@ -3,7 +3,7 @@ import changeFilter from './contacts-actions';
 import operations from './contacts-operations';
 
 const items = createReducer([], {
-  // [operations.fetchContacts.fulfilled]: (_, { payload }) => payload,
+  [operations.fetchContacts.fulfilled]: (_, { payload }) => payload,
   [operations.addNewContact.fulfilled]: (state, { payload }) => [
     ...state,
     payload,
@@ -13,9 +13,9 @@ const items = createReducer([], {
 });
 
 const loading = createReducer(false, {
-  // [operations.fetchContacts.pending]: () => true,
-  // [operations.fetchContacts.fulfilled]: () => false,
-  // [operations.fetchContacts.rejected]: () => false,
+  [operations.fetchContacts.pending]: () => true,
+  [operations.fetchContacts.fulfilled]: () => false,
+  [operations.fetchContacts.rejected]: () => false,
   [operations.addNewContact.pending]: () => true,
   [operations.addNewContact.fulfilled]: () => false,
   [operations.addNewContact.rejected]: () => false,
