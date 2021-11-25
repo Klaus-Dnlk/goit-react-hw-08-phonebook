@@ -1,26 +1,26 @@
+// import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../redux/contacts';
 import s from './Styles.module.scss';
-import { useEffect } from 'react';
 
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const dispatch = useDispatch();
   const isLoading = useSelector(contactsSelectors.getLoading);
 
-  useEffect(() => {
-    dispatch(contactsOperations.fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(contactsOperations.fetchContacts());
+  // }, [dispatch]);
 
   return (
     <>
       {isLoading && <h1>Loading...</h1>}
       {contacts.length > 0 && (
         <ul className={s.contactList}>
-          {contacts.map(({ id, name, phone }) => (
+          {contacts.map(({ id, name, number }) => (
             <li key={id} className={s.listItem}>
               <p>
-                {name}: {phone}
+                {name}: {number}
               </p>
               <button
                 type="button"

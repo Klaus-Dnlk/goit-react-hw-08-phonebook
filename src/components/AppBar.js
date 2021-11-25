@@ -11,7 +11,7 @@ export default function AppBar() {
     <header className={s.section}>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      <h2 className={s.title}>Navigation</h2>
+      {/* <h2 className={s.title}>Navigation</h2> */}
     </header>
   );
 }

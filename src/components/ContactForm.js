@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import ContactOperations from '../redux/contacts/contacts-operations';
+import contactsOperations from '../redux/contacts/contacts-operations';
 import { getAllContacts } from '../redux/contacts/contacts-selectors';
 import s from './Styles.module.scss';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const items = useSelector(getAllContacts);
   const dispatch = useDispatch();
   const contactId = uuidv4();
-  const phoneId = uuidv4();
+  const numberId = uuidv4();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -20,8 +20,8 @@ export default function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         return;
@@ -36,14 +36,14 @@ export default function ContactForm() {
     if (repeatName(name)) {
       alert(`${name} is already in contacts`);
     } else {
-      dispatch(ContactOperations.addNewContact({ name, phone }));
+      dispatch(contactsOperations.addNewContact({ name, number }));
     }
     reset();
   };
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -63,18 +63,18 @@ export default function ContactForm() {
             id={contactId}
           />
         </label>
-        <label htmlFor={phoneId} className={s.contact_formLabel}>
-          Phone
+        <label htmlFor={numberId} className={s.contact_formLabel}>
+          number
           <input
             type="tel"
-            name="phone"
+            name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
             className={s.inputWindow}
-            value={phone}
+            value={number}
             onChange={handleChange}
-            id={phoneId}
+            id={numberId}
           />
         </label>
         <button type="submit" title="Добавить контакт" className={s.btn}>

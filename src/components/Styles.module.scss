@@ -6,7 +6,10 @@
 }
 
 .section {
-    width: 400px;
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
     
@@ -102,4 +105,8 @@
 .user_name {
     margin-right: 11px;
     font-weight: 700;
+}
+
+.avatar {
+    margin-right: 4;
 }

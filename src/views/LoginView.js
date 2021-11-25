@@ -27,29 +27,35 @@ export default function LoginView() {
   };
 
   return (
-    <div>
-      <h1>Login page</h1>
+    <div className={s.section}>
+      <h1 className={s.title}>Login page</h1>
 
       <form onSubmit={handleSubmit} className={s.user_form} autoComplete="off">
-        <lable style={s.user_label}>
+        <label className={s.user_label}>
           Email
           <input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            className={s.user_input}
           />
-        </lable>
+        </label>
 
-        <lable className={s.user_label}>
+        <label className={s.user_label}>
           Password
           <input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            className={s.user_input}
           />
-        </lable>
+        </label>
+
+        <button type="submit" className={s.btn}>
+          Sign In
+        </button>
       </form>
     </div>
   );
