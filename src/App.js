@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
+import LoaderIco from './components/Loader';
 import { authOperations } from './redux/auth';
 // import { useSelector } from 'react-redux';
 import PrivateRoute from './components/PrivateRoute';
@@ -29,7 +30,7 @@ export default function App() {
     // isFetchingCurrentUser && (
     <Container>
       <AppBar />
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<LoaderIco />}>
         <Switch>
           <PublicRoute exact path="/">
             <HomeView />

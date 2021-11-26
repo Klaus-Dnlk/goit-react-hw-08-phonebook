@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors } from '../redux/contacts';
 import operations from '../redux/contacts/contacts-operations';
 import { Button } from 'react-bootstrap';
+import LoaderIco from './Loader';
 import s from './Styles.module.css';
 
 export default function ContactList() {
@@ -12,7 +13,7 @@ export default function ContactList() {
 
   return (
     <>
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && <LoaderIco />}
       {contacts.length > 0 && (
         <ul className={s.contactList}>
           {contacts.map(({ id, name, number }) => (

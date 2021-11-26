@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { v4 as uuidv4 } from 'uuid';
 import contactsOperations from '../redux/contacts/contacts-operations';
 import { getAllContacts } from '../redux/contacts/contacts-selectors';
 import { Button, Form } from 'react-bootstrap';
@@ -11,8 +10,6 @@ export default function ContactForm() {
   const [number, setNumber] = useState('');
   const items = useSelector(getAllContacts);
   const dispatch = useDispatch();
-  // const contactId = uuidv4();
-  // const numberId = uuidv4();
 
   const handleChange = e => {
     const { name, value } = e.target;
