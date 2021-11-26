@@ -1,16 +1,14 @@
 // import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactsOperations, contactsSelectors } from '../redux/contacts';
-import s from './Styles.module.scss';
+import { contactsSelectors } from '../redux/contacts';
+import operations from '../redux/contacts/contacts-operations';
+import { Button } from 'react-bootstrap';
+import s from './Styles.module.css';
 
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const dispatch = useDispatch();
   const isLoading = useSelector(contactsSelectors.getLoading);
-
-  // useEffect(() => {
-  //   dispatch(contactsOperations.fetchContacts());
-  // }, [dispatch]);
 
   return (
     <>
@@ -22,14 +20,16 @@ export default function ContactList() {
               <p>
                 {name}: {number}
               </p>
-              <button
+              <Button
+                variant="outline-danger"
+                size="sm"
                 type="button"
-                onClick={() => dispatch(contactsOperations.deleteContact(id))}
                 className={s.btn}
-                title="Удалить контакт"
+                onClick={() => dispatch(operations.deleteContact(id))}
+                title="Delete contact"
               >
                 Delete
-              </button>
+              </Button>
             </li>
           ))}
         </ul>

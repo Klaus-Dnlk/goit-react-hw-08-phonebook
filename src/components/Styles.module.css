@@ -9,81 +9,70 @@
     display: flex;
     padding: 15px;
     justify-content: space-between;
-    width: 600px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
+
+    font-size: 20px;
     
-    background-color: #77c497;
-    border-radius: 5%;
+    background-color: #d19b37;
+    opacity: 0.8;
+    border-radius: 25px;
 
     box-shadow: 15px 15px 11px -1px rgba(34, 60, 80, 0.2);;
 }
 
 
 .contact_form {
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px;
-    text-align: center;
-    outline: 2px solid #000;
-}
-
-.contact_formLabel {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+     
+    background-color: #40ac76;
+    border-radius: 20px;
 
-    font-size: 18px;
-}
-
-.inputWindow {
-    width: 100%;
-    margin-top: 10px;
-    font-size: 16px;
-    font-style: italic;
+    box-shadow: 15px 15px 11px -1px rgba(34, 60, 80, 0.2);;    
 }
 
 .filterBox {
-    width: 300px;
+    width: 400px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 20px;
-}
+    padding: 2px  10px;
 
-.filterInput {
-    width: 100%;
-    
-    font-size: 16px;
-    font-style: italic;
+    background-color: #40ac76;
+    border-radius: 15px;
 }
 
 .contactList {
-    width: 350px;
-    // margin-left: auto;
-    // margin-right: auto;
+    width: 400px;
+    height: 170px;
+    margin-top: 5px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 18px;
     list-style: none;
+    overflow-y: scroll;
+
+    background-color: #40ac76;
+    border-radius: 20px;
 }
 
 .listItem {
     display: flex;
-    align-items: center;
+    align-items:baseline; 
     justify-content: space-between;
     width: 100%;
 }
 
 .btn {
-    display: block;
-    height: 25px;
-    color: #0c0c0b;
-    transition: 0.25s;
-    
-    &:hover {
-        box-shadow: inset 6.5em 0 0 0 #{adjust-hue(#8fc866, 45deg)};;
-    }
-}
+    border-radius: 10px;   
+  }
 
 .link {
     display: inline-block;
@@ -94,7 +83,9 @@
 }
 
 .activeLink {
-    color: #E84A5F;
+    color: #dbdbd2;
+    border-radius: 10px;
+    background-color: #40ac76;
 }
 
 .user_container {
@@ -108,5 +99,5 @@
 }
 
 .avatar {
-    margin-right: 4;
+    margin-right: 4px;
 }

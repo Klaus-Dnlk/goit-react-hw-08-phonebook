@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -17,7 +18,14 @@ const register = createAsyncThunk('auth/register', async credentials => {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(
+      toast('Fail creating User! Try again', {
+        type: 'warn',
+        theme: 'dark',
+      }),
+    );
+  }
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
@@ -25,14 +33,21 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(toast('Invalid email or password! Try again!'), {
+      type: 'warn',
+      theme: 'colored',
+    });
+  }
 });
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(toast('Error!', { type: 'error', theme: 'colored' }));
+  }
 });
 
 const fetchCurrentUser = createAsyncThunk(
@@ -48,7 +63,9 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await axios.get('/users/current');
       return data;
-    } catch (error) {}
+    } catch (error) {
+      throw new Error(toast('Error!', { type: 'error', theme: 'dark' }));
+    }
   },
 );
 

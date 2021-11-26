@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
-import s from './views.module.scss';
+import { Button, Form } from 'react-bootstrap';
+import s from './views.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -28,35 +29,37 @@ export default function LoginView() {
 
   return (
     <div className={s.section}>
-      <h1 className={s.title}>Login page</h1>
+      <h1 className={s.title}>Log in</h1>
 
-      <form onSubmit={handleSubmit} className={s.user_form} autoComplete="off">
-        <label className={s.user_label}>
-          Email
-          <input
+      <Form onSubmit={handleSubmit} className={s.user_form} autoComplete="off">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
             type="email"
+            placeholder="Enter email"
             name="email"
             value={email}
+            required
             onChange={handleChange}
-            className={s.user_input}
           />
-        </label>
+        </Form.Group>
 
-        <label className={s.user_label}>
-          Password
-          <input
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
+            placeholder=" Enter password"
             name="password"
             value={password}
+            required
             onChange={handleChange}
-            className={s.user_input}
           />
-        </label>
+        </Form.Group>
 
-        <button type="submit" className={s.btn}>
-          Sign In
-        </button>
-      </form>
+        <Button variant="outline-success" type="submit" className={s.viewsbtn}>
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }

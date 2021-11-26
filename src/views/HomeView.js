@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './views.module.scss';
+import s from './views.module.css';
 
 const HomeView = () => (
-  <div>
-    <h1 className={s.title}>Welcome to our phone book service</h1>
+  <div className={s.congrats_frame}>
+    <h1 className={s.homeviewtitle}>Welcome to Phone book service</h1>
   </div>
 );
 
